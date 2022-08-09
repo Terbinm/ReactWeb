@@ -46,6 +46,7 @@ typedef enum  {
 } hap_mfi_auth_type_t;
 
 /** HomeKit Transports to be enabled */
+//Homekit傳輸功能
 typedef enum {
     /** Unknown. Default uninitialized value */
     HAP_TRANSPORT_UNKNOWN          = 0x00,
@@ -59,6 +60,7 @@ typedef enum {
 
 /**
  * HAP characteristic value formats
+ * HAP協議特徵的位置
  */
 typedef enum {
     /** No Type/Invalid type */
@@ -86,6 +88,7 @@ typedef enum {
 } hap_char_format_t;
 
 /** Data value */
+//指針
 typedef struct {
     /** Pointer to an allocated buffer holding the data. This should remain valid
      * throughout the lifetime of the characteristic.
@@ -96,9 +99,11 @@ typedef struct {
 } hap_data_val_t;
 
 /** TLV8 value (Same as \ref hap_data_val_t) */
+//數據類型的TAG，TLV協議值
 typedef hap_data_val_t hap_tlv8_val_t;
 
 /** HAP Value */
+//HAP協議值
 typedef union {
     /** Boolean */
 	bool b;
@@ -119,6 +124,7 @@ typedef union {
 } hap_val_t;
 
 /** Information about the Provisioned Network to which the accessory will connect */
+//終端機設定的wifi資料儲存位置
 typedef struct {
     /** SSID for the network */
     uint8_t ssid[64];
@@ -132,15 +138,17 @@ typedef struct {
 
 /**
  * HAP characteristics unit types
+ * HAP特徵類型宣告
  */
-#define HAP_CHAR_UNIT_CELSIUS       "celsius"
-#define HAP_CHAR_UNIT_PERCENTAGE    "percentage"
-#define HAP_CHAR_UNIT_ARCDEGREES    "arcdegrees"
-#define HAP_CHAR_UNIT_LUX           "lux"
-#define HAP_CHAR_UNIT_SECONDS       "seconds"
+#define HAP_CHAR_UNIT_CELSIUS       "celsius"//設定攝氏或華氏
+#define HAP_CHAR_UNIT_PERCENTAGE    "percentage"//掰分比
+#define HAP_CHAR_UNIT_ARCDEGREES    "arcdegrees"//弧度
+#define HAP_CHAR_UNIT_LUX           "lux"//亮度單位 (勒克斯)
+#define HAP_CHAR_UNIT_SECONDS       "seconds"//阿災
 
 /** HAP Characteristic properties/permissions */
 /** Characteristic supports Paired Read */
+//屬性跟權限設定
 #define HAP_CHAR_PERM_PR        (1 << 0)
 /** Characteristic supports Paired Write */
 #define HAP_CHAR_PERM_PW        (1 << 1)
@@ -152,7 +160,8 @@ typedef struct {
 #define HAP_CHAR_PERM_TW        (1 << 4)
 /** Characteristic is hidden from the user */
 #define HAP_CHAR_PERM_HD        (1 << 5)
-/** Characterictic is of special read only type.
+/**沒用ㄒㄧㄠˇ知識 
+ * Characterictic is of special read only type.
  * Valid for characteristics like "Programmable Switch Event" wherein the value
  * needs to be reported as NULL for a read, even when it is a uint8. Actual value
  * is reported only using event notifications.

@@ -29,8 +29,10 @@
 #include <esp_wifi.h>
 #include <esp_err.h>
 /** HomeKit Event Base */
+//環境BASE
 ESP_EVENT_DECLARE_BASE(HAP_WAC_EVENT);
 /** HomeKit Events */
+//事件
 typedef enum {
     /* WAC has started. Associated data is NULL */
     HAP_WAC_EVENT_STARTED,
